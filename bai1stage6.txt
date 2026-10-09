@@ -1,0 +1,27 @@
+
+Phần 1: Phân tích lỗi
+
+Lỗi 1: Lệnh mkdir Smart Farm Project chưa đúng vì tên thư mục có dấu
+cách. PowerShell có thể hiểu Smart, Farm và Project là các phần riêng
+biệt, nên không tạo đúng một thư mục tên Smart Farm Project.
+
+Lỗi 2: Lệnh cd Smart Farm Project cũng sai vì PowerShell không hiểu đây
+là một đường dẫn có khoảng trắng nếu không đặt trong dấu ngoặc kép. Lệnh
+tạo thư mục con cũng nên dùng đường dẫn Windows với dấu gạch chéo ngược
+ để dễ đọc và đúng quy ước.
+
+Phần 2: Các lệnh đã sửa
+
+mkdir "Smart Farm Project" cd "Smart Farm Project" mkdir "src"
+
+Sau khi chạy xong, cấu trúc thư mục sẽ là:
+
+Smart Farm Project └── src └── sensors └── temperature
+
+Giải thích: 
+- Dấu ngoặc kép giúp PowerShell hiểu tên thư mục có khoảng
+trắng là một cụm. 
+- Dấu  dùng để ngăn cách các thư mục trong đường dẫn
+Windows. 
+- Lệnh mkdir có thể tạo các thư mục con còn thiếu trong đường
+dẫn.
