@@ -1,0 +1,42 @@
+Phần 1: Phân tích lỗi
+
+Lỗi 1:
+Lệnh mkdir Smart Farm Project bị sai vì tên thư mục có khoảng trắng. PowerShell có thể hiểu Smart, Farm và Project là các phần riêng. Vì vậy, cần thêm dấu ngoặc kép để tạo đúng một thư mục có tên Smart Farm Project.
+
+Ví dụ:
+mkdir "Smart Farm Project"
+
+Lỗi 2:
+Lệnh cd Smart Farm Project cũng bị sai vì tên thư mục có khoảng trắng nên cần đặt trong dấu ngoặc kép. Ngoài ra, phải tạo được thư mục trước thì mới chuyển vào đó được.
+
+Lệnh đúng:
+cd "Smart Farm Project"
+
+Lỗi 3:
+Lệnh mkdir "src" mới chỉ tạo thư mục src, chưa có sensors và temperature. Muốn tạo đủ các thư mục con thì cần dùng đường dẫn đầy đủ. Nếu thư mục cha chưa có, lệnh tạo thư mục lồng nhau sẽ không thực hiện đúng như mong muốn.
+
+Phần 2: Các lệnh đã sửa
+
+Chạy lần lượt từng dòng trong PowerShell:
+
+mkdir "Smart Farm Project"
+cd "Smart Farm Project"
+New-Item -ItemType Directory -Path "src\sensors\temperature" -Force
+Get-ChildItem -Recurse
+
+Giải thích:
+- Dấu ngoặc kép giúp tên thư mục có khoảng trắng được hiểu là một tên.
+- Lệnh New-Item tạo các thư mục src, sensors và temperature theo đúng thứ tự.
+- -Force giúp xử lý trường hợp thư mục đã tồn tại.
+- Get-ChildItem -Recurse dùng để xem lại các thư mục đã tạo.
+
+Kết quả mong muốn:
+
+Smart Farm Project
+└── src
+    └── sensors
+        └── temperature
+
+Phần 3: Phím Tab
+
+Khi gõ tên thư mục trong PowerShell, có thể gõ vài ký tự đầu rồi nhấn Tab để tự động hoàn thành tên. Cách này giúp đỡ phải gõ nhiều và hạn chế sai tên thư mục.
